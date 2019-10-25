@@ -83,7 +83,9 @@
         (assoc-in [:users-by-id id] user)
         (update :users-list conj id))))
 
+;; ---------
 ;; Exercises
+;;----------
 
 (defn get-full-name
   "Gets the full name (first name and last name)
@@ -93,16 +95,32 @@
   (get-full-name {:first-name \"Daniel\" :last-name \"King\"})
   -> \"Daniel King\""
   [user]
-  ;; TODO
-  )
+  (str (user :first-name) " " (user :last-name)))
+
+
 
 (defn get-ids
   "Given a vector of users, returns a list of the users' ids.
 
   Bonus points: Try doing this with loop/recur and with map."
   [users]
+  (loop [remaining users id-list ()]
+      (if (empty? remaining)
+        id-list
+        (let
+          [user (first remaining)
+           remanentes (rest remaining)
+           ids (conj id-list (user :id))]
+          (recur remanentes ids)))))
+
   ;; TODO
-  )
+ ;; user=> [1 2 3 4]
+
+(defn get-ids-1
+  "Given a vector of users, returns a list of the user's ids using map."
+  [users]
+  (map #(get % :id) users))
+
 
 (defn http-handler
   "Given an http request, returns the response that should be
@@ -120,9 +138,9 @@
 
   Any other request should result in a 404 response
   with the text \"Not found\" in the body."
-  [req]
+  [req])
   ;; TODO
-  )
+
 
 (defn total-of-positives
   "Gets the sum of a sequence of numbers. Non-positive numbers
@@ -131,9 +149,9 @@
   Example:
   (total-of-positives [1 5 -10 3 -2])
   -> 9"
-  [nums]
+  [nums])
   ;; TODO
-  )
+
 
 (defn is-palindrome
   "Determines whether or not a given string is a palindrome.
@@ -142,9 +160,9 @@
   (is-palindrome \"Hello\") -> false
   (is-palindrome \"abcba\") -> true
   Challenge: (is-palindrome \"Taco Cat\") -> true"
-  [str]
+  [str])
   ;; TODO
-  )
+
 
 (defn caesar-encrypt
   "Takes a word and a number, and rotates each letter in the word
@@ -157,6 +175,5 @@
 
   Note: The name of the function comes from the fact that this transformation
   is known as a Caesar Cipher."
-  [word num-places]
+  [word num-places])
   ;; TODO
-  )

@@ -24,7 +24,7 @@
          :auto-reload? true}
 
   :profiles
-  {:dev {:env {:environment "development"}}
+  {:dev  {:env {:environment "development"}}
 
    :test {:env {:environment "test"}
           :dependencies [[pjstadig/humane-test-output "0.9.0"]]
